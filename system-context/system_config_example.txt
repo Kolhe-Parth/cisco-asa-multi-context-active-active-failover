@@ -1,0 +1,59 @@
+# Cisco ASA System Context - Configuration Example
+# For Multi-Context Active-Active Failover Setup
+
+hostname ASA-FW-Pair
+enable password 8Ry2YjIyt7RRXU24 encrypted
+
+! =============================================
+! Enable Multiple Context Mode
+! =============================================
+mode multiple
+
+! =============================================
+! Context Definition - TCS
+! =============================================
+context tcs
+ description TCS Company Context
+ allocate-interface Ethernet0 inside
+ allocate-interface Ethernet1 outside
+ config-url disk0:/tcs.cfg
+
+! =============================================
+! Context Definition - Wipro
+! =============================================
+context wipro
+ description Wipro Company Context
+ allocate-interface Ethernet1 outside
+ allocate-interface Ethernet3 inside
+ config-url disk0:/wipro.cfg
+
+! =============================================
+! Active-Active Failover Configuration
+! =============================================
+failover
+failover lan unit primary
+failover lan interface FAILOVER Ethernet4
+failover link FAILOVER Ethernet4
+
+! Failover Group 1 - TCS Context (Active on Primary ASA)
+failover group 1
+ primary
+ preempt
+ replicate http
+
+! Failover Group 2 - Wipro Context (Active on Secondary ASA)
+failover group 2
+ secondary
+ preempt
+ replicate http
+
+! =============================================
+! Optional: Save Configuration
+! =============================================
+write memory
+
+Important Notes (for your reference):
+
+This is an example file. You may need to adjust interface names (Ethernet4 for failover link) based on your actual EVE-NG lab setup.
+The config-url points to where each context configuration will be saved (tcs.cfg and wipro.cfg).
+Failover Groups are the key to achieving Active-Active behavior in multi-context mode.
