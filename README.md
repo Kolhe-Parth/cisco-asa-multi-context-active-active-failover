@@ -12,46 +12,34 @@ Designed to showcase advanced expertise in firewall virtualization, high-availab
 
 ```mermaid
 flowchart TD
-    subgraph Internet["Internet"]
-        Server["Internet Server"]
-    end
+    Internet[Internet]
+    ISP["ISP Router<br>10.0.0.254"]
 
-    ISP["ISP Router<br>10.0.0.254"] --- Server
+    ASA1["ASA 1<br>Primary"]
+    ASA2["ASA 2<br>Secondary"]
 
-    subgraph "Shared Outside (10.0.0.0/24)"
-        ISP
-    end
+    TCS_Inside["TCS Inside<br>1.0.0.0/24"]
+    Wipro_Inside["Wipro Inside<br>3.0.0.0/24"]
 
-    subgraph "ASA Failover Pair<br>(Active-Active Multi-Context)"
-        ASA1["ASA 1<br>Primary"]
-        ASA2["ASA 2<br>Secondary"]
-        ASA1 <-->|Failover Link| ASA2
-    end
+    TCS_Router["TCS Router + PCs"]
+    Wipro_Router["Wipro Router + PCs"]
 
-    ISP --- ASA1
-    ISP --- ASA2
+    Internet --> ISP
+    ISP --> ASA1
+    ISP --> ASA2
 
-    subgraph "TCS Context"
-        TCS_Inside["TCS Inside Network<br>1.0.0.0/24"]
-        TCS_Router["TCS Router + PCs"]
-    end
+    ASA1 <-->|Failover Link| ASA2
 
-    subgraph "Wipro Context"
-        Wipro_Inside["Wipro Inside Network<br>3.0.0.0/24"]
-        Wipro_Router["Wipro Router + PCs"]
-    end
+    ASA1 --> TCS_Inside
+    ASA2 --> TCS_Inside
+    ASA1 --> Wipro_Inside
+    ASA2 --> Wipro_Inside
 
-    ASA1 ---|TCS Context| TCS_Inside
-    ASA2 ---|TCS Context| TCS_Inside
+    TCS_Inside --> TCS_Router
+    Wipro_Inside --> Wipro_Router
 
-    ASA1 ---|Wipro Context| Wipro_Inside
-    ASA2 ---|Wipro Context| Wipro_Inside
-
-    TCS_Inside --- TCS_Router
-    Wipro_Inside --- Wipro_Router
-
-    style ASA1 fill:#e3f2fd
-    style ASA2 fill:#e3f2fd
+    classDef asa fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    class ASA1,ASA2 asa
 
 Key Features
 
