@@ -9,7 +9,6 @@ Designed to showcase advanced expertise in firewall virtualization, high-availab
 ---
 
 ## Network Topology
-
 ```mermaid
 flowchart TD
     Internet[Internet]
@@ -41,7 +40,8 @@ flowchart TD
     classDef asa fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     class ASA1 ASA2 asa
 
-    %% Key Features
+    ```markdown
+## Key Features
 
 Active-Active Failover using Failover Groups for true load sharing
 Multi-Context Mode enabling two fully independent virtual firewalls on shared physical hardware
