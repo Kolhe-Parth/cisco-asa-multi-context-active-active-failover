@@ -40,8 +40,7 @@ flowchart TD
 
     classDef asa fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     class ASA1 ASA2 asa
-## Key Features
-
+Key Features
 Active-Active Failover using Failover Groups for true load sharing
 Multi-Context Mode enabling two fully independent virtual firewalls on shared physical hardware
 Complete isolation between TCS (1.0.0.0/24) and Wipro (3.0.0.0/24) internal networks
