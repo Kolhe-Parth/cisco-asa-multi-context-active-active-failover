@@ -39,7 +39,7 @@ flowchart TD
     Wipro_Inside --> Wipro_Router
 
     classDef asa fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-    class ASA1,ASA2 asa
+    class ASA1 ASA2 asa
 
 Key Features
 
