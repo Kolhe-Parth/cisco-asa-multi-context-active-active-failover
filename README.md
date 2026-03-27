@@ -40,8 +40,8 @@ flowchart TD
 
     classDef asa fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     class ASA1,ASA2 asa
-    
-````    
+
+```  
 
 Key Features
 
@@ -133,7 +133,7 @@ textcisco-asa-multi-context-active-active-failover/
 ├── docs/
 │   ├── failover-guide.md
 │   └── testing-scenarios.md
-└── screenshots/                  ← Lab screenshots
+└── screenshots/                 
 
 System Context Reference
 Contexts are created in the System Execution Space using:
@@ -159,13 +159,13 @@ Lab Screenshots
 2. Normal Operation (Primary ASA)
 <img src="screenshots/02-normal-operation-primary-asa1.png" alt="Normal Operation - Primary">
 3. Normal Operation (Secondary ASA)
-<img src="screenshots/02-normal-operation-secondary-asa2.png" alt="Normal Operation - Secondary">
+<img src="screenshots/03-normal-operation-secondary-asa2.png" alt="Normal Operation - Secondary">
 4. Failover Test - ASA1 Down
 <img src="screenshots/04-failover-test-asa1-down.png" alt="Failover Test - ASA1 Down">
 5. Failover Test - ASA2 Down
 <img src="screenshots/05-failover-test-asa2-down.png" alt="Failover Test - ASA2 Down">
 6. NAT Translations - TCS Context
-<img src="screenshots/07-nat-translations-tcs-context.png" alt="NAT Translations - TCS">
+<img src="screenshots/06-nat-translations-tcs-context.png" alt="NAT Translations - TCS">
 7. NAT Translations - Wipro Context
 <img src="screenshots/07-nat-translations-wipro-context.png" alt="NAT Translations - Wipro">
 
